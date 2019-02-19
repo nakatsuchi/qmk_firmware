@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: docker build
+          command: util/docker_build.sh planck/rev6:nakatsuchi
+      - store_artifacts:
+          path: .build/planck_rev6_nakatsuchi.hex
+
