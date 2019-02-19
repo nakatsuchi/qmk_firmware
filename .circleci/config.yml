@@ -5,6 +5,9 @@ jobs:
       - image: edasque/qmk_firmware
     steps:
       - checkout
+        post:
+          - git submodule sync
+          - git submodule update --init
       - run:
           name: build keymap
           command: |
