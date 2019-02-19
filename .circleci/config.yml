@@ -1,12 +1,15 @@
 version: 2
 jobs:
   build:
-    machine: true
+    docker:
+      - image: edasque/qmk_firmware
     steps:
       - checkout
       - run:
-          name: checkout submodules
-          command: make git-submodule
+          name: build keymap
+          command: |
+            make clean
+            make keyboard=planck/rev6 keymap=nakatsuchi
       - run:
           name: docker build
           command: util/docker_build.sh planck/rev6:nakatsuchi
