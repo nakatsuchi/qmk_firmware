@@ -5,6 +5,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: checkout submodules
+          command: make git-submodule
+      - run:
           name: docker build
           command: util/docker_build.sh planck/rev6:nakatsuchi
       - store_artifacts:
